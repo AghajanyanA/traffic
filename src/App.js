@@ -90,19 +90,28 @@ function App() {
             <div className='controls'>
                 <div>
                     <p>Set color duration (seconds)</p>
-                    <label>Red: </label>
-                    <input type="number" value={inputDurations.red} onChange={(e) => setInputDurations(prevState => ({ ...prevState, red: Number(e.target.value) }))} />
-                    <br />
-                    <label>Yellow: </label>
-                    <input type="number" value={inputDurations.yellow} onChange={(e) => setInputDurations(prevState => ({ ...prevState, yellow: Number(e.target.value) }))} />
-                    <br />
-                    <label>Green: </label>
-                    <input type="number" value={inputDurations.green} onChange={(e) => setInputDurations(prevState => ({ ...prevState, green: Number(e.target.value) }))} />
-                    <br />
-                    <button onClick={handleSaveDurations}>Save</button>
-                    <button onClick={() => {   
-                        setCurrentMode(prev => prev === 'hazard' || prev === 'initial' ? 'working' : 'hazard')
-                    }}>Hazard {currentMode === 'hazard' ? 'off' : 'on'}</button>
+                    <div className='inputsWrapper'>
+                        <div className='inputRow'>
+                            <label>Red: </label>
+                            <input type="number" min={0} pattern='[0-9]*' value={inputDurations.red} onChange={(e) => setInputDurations(prevState => ({ ...prevState, red: Number(e.target.value) }))} />
+                        </div>
+                        <br />
+                        <div className='inputRow'>
+                            <label>Yellow: </label>
+                            <input type="number" min={0} pattern='[0-9]*' value={inputDurations.yellow} onChange={(e) => setInputDurations(prevState => ({ ...prevState, yellow: Number(e.target.value) }))} />
+                        </div>
+                        <br />
+                        <div className='inputRow'>
+                            <label>Green: </label>
+                            <input type="number" min={0} pattern='[0-9]*' value={inputDurations.green} onChange={(e) => setInputDurations(prevState => ({ ...prevState, green: Number(e.target.value) }))} />
+                        </div>
+                    </div>
+                    <div className='buttons'>
+                        <button onClick={handleSaveDurations}>Save</button>
+                        <button onClick={() => {   
+                            setCurrentMode(prev => prev === 'hazard' || prev === 'initial' ? 'working' : 'hazard')
+                        }}>Hazard {currentMode === 'hazard' ? 'off' : 'on'}</button>
+                    </div>
                 </div>
             </div>
         </div>
